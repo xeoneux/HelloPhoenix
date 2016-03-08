@@ -1,16 +1,15 @@
-defmodule HelloPhoenix.Post do
+defmodule HelloPhoenix.Comment do
   use HelloPhoenix.Web, :model
 
-  schema "posts" do
-    field :title, :string
-    field :body, :string
-
-    has_many :comments, HelloPhoenix.Comment
+  schema "comments" do
+    field :name, :string
+    field :context, :string
+    belongs_to :post, HelloPhoenix.Post, foreign_key: :post_id
 
     timestamps
   end
 
-  @required_fields ~w(title body)
+  @required_fields ~w(name context post_id)
   @optional_fields ~w()
 
   @doc """
